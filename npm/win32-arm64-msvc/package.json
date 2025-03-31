@@ -11,8 +11,28 @@
   "files": [
     "window-audio-visualisation.win32-arm64-msvc.node"
   ],
+  "description": "A library for visualizing audio data from Windows speaker devices in Node.js.",
+  "keywords": [
+    "windows",
+    "media",
+    "smtc",
+    "monitor",
+    "napi",
+    "native",
+    "addon"
+  ],
+  "author": {
+    "name": "Coooookies",
+    "email": "admin@mitay.net",
+    "url": "https://mitay.net"
+  },
   "license": "MIT",
   "engines": {
-    "node": ">= 10"
-  }
+    "node": ">=16.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "repository": "https://github.com/LeagueTavern/node-window-audio-visualisation"
 }
