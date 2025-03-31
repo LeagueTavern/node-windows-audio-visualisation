@@ -10,6 +10,8 @@
 
 > This library allows developers to access audio visualisation data from the Windows using [Node.js](https://nodejs.org/), providing a simple API to access this data. It is written in [Rust](https://www.rust-lang.org/) and utilizes [napi-rs](https://napi.rs/) to implement bindings with Node.js.
 
+English | [简体中文](./README_CN.md)
+
 ## ⚠️ Warning
 
 `node-window-audio-visualisation` only supports Windows.

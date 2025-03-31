@@ -10,6 +10,8 @@
 
 > 本库诞生的初衷，是为了解决无法在 [Electron](https://www.electronjs.org/) 和 [Node.js](https://nodejs.org/) 中无法访问 Windows 扬声器的音频可视化数据的问题，本库在解决问题的基础上，提供了简单的 API 来访问这些数据。使用了 [napi-rs](https://napi.rs/) 来实现了对本库进行 Native Addon 的封装，由 [Rust](https://www.rust-lang.org/) 强力驱动。
 
+[English](./README.md) | 简体中文
+
 ## ⚠️ 注意
 
 `node-window-audio-visualisation` 目前仅支持 Windows 平台
