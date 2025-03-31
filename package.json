@@ -1,0 +1,88 @@
+{
+  "name": "@coooookies/window-audio-visualisation",
+  "description": "A library for visualizing audio data from Windows speaker devices in Node.js.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "module": "index.mjs",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.mjs",
+      "require": "./index.js"
+    }
+  },
+  "author": {
+    "name": "Coooookies",
+    "email": "admin@mitay.net",
+    "url": "https://mitay.net"
+  },
+  "napi": {
+    "name": "window-audio-visualisation",
+    "triples": {
+      "defaults": false,
+      "additional": [
+        "aarch64-pc-windows-msvc",
+        "x86_64-pc-windows-msvc",
+        "i686-pc-windows-msvc"
+      ]
+    }
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@swc-node/register": "^1.10.9",
+    "@swc/core": "^1.11.8",
+    "@napi-rs/cli": "^2.18.4",
+    "ava": "^6.0.1"
+  },
+  "ava": {
+    "require": [
+      "@swc-node/register"
+    ],
+    "extensions": [
+      "ts"
+    ],
+    "timeout": "3m",
+    "environmentVariables": {
+      "TS_NODE_PROJECT": "./tsconfig.json"
+    }
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "keywords": [
+    "windows",
+    "media",
+    "smtc",
+    "monitor",
+    "napi",
+    "native",
+    "addon"
+  ],
+  "files": [
+    "index.d.ts",
+    "index.js",
+    "index.mjs"
+  ],
+  "scripts": {
+    "artifacts": "napi artifacts",
+    "example:ts": "npm run build && node -r @swc-node/register example/index.ts",
+    "example:mjs": "npm run build && node --experimental-specifier-resolution=node example/index.mjs",
+    "example": "npm run build && node example/index.js",
+    "build": "napi build --platform --release",
+    "build:debug": "napi build --platform",
+    "prepublishOnly": "napi prepublish -t npm",
+    "test": "ava __test__/**/index*.*",
+    "universal": "napi universal",
+    "version": "napi version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeagueTavern/node-window-audio-visualisation.git"
+  },
+  "packageManager": "yarn@3.8.5"
+}

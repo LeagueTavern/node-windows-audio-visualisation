@@ -1,0 +1,24 @@
+[package]
+edition = "2021"
+name = "window-audio-visualisation"
+version = "0.0.0"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+cpal = "0.15.3"
+napi = { version = "2.12.2", default-features = false, features = ["napi4"] }
+napi-derive = "2.12.2"
+rustfft = "6.2.0"
+
+[dependencies.dasp]
+version = "0.11.0"
+features = ["all"]
+
+[build-dependencies]
+napi-build = "2.0.1"
+
+[profile.release]
+lto = true
+strip = "symbols"
