@@ -1,5 +1,5 @@
 {
-  "name": "window-audio-visualisation-win32-arm64-msvc",
+  "name": "windows-audio-visualisation-win32-arm64-msvc",
   "version": "0.0.0",
   "os": [
     "win32"
@@ -7,9 +7,9 @@
   "cpu": [
     "arm64"
   ],
-  "main": "window-audio-visualisation.win32-arm64-msvc.node",
+  "main": "windows-audio-visualisation.win32-arm64-msvc.node",
   "files": [
-    "window-audio-visualisation.win32-arm64-msvc.node"
+    "windows-audio-visualisation.win32-arm64-msvc.node"
   ],
   "description": "A library for visualizing audio data from Windows speaker devices in Node.js.",
   "keywords": [
@@ -34,5 +34,5 @@
     "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
-  "repository": "https://github.com/LeagueTavern/node-window-audio-visualisation"
+  "repository": "https://github.com/LeagueTavern/node-windows-audio-visualisation"
 }

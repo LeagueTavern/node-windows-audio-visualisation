@@ -1,6 +1,6 @@
 [package]
 edition = "2021"
-name = "window-audio-visualisation"
+name = "windows-audio-visualisation"
 version = "0.0.0"
 
 [lib]

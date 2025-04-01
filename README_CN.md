@@ -1,10 +1,10 @@
 # Node-Windows-Audio-Visualisation
 
-<a href="https://github.com/LeagueTavern/node-window-audio-visualisation/issues"><img src="https://img.shields.io/github/issues/LeagueTavern/node-window-audio-visualisation?style=for-the-badge" alt="@coooookies/window-audio-visualisation downloads"></a>
-<a href="https://github.com/LeagueTavern/node-window-audio-visualisation/actions"><img alt="GitHub CI Status" src="https://img.shields.io/github/actions/workflow/status/LeagueTavern/node-window-audio-visualisation/CI.yml?style=for-the-badge"></a>
-<a href="https://nodejs.org/en/about/releases/"><img src="https://img.shields.io/node/v/%40coooookies%2Fwindow-audio-visualisation?style=for-the-badge" alt="Node.js version"></a>
-<a href="https://www.npmjs.com/package/@coooookies/window-audio-visualisation"><img src="https://img.shields.io/npm/v/@coooookies/window-audio-visualisation.svg?style=for-the-badge&sanitize=true" alt="@coooookies/window-audio-visualisation npm version"></a>
-<a href="https://npmcharts.com/compare/@coooookies/window-audio-visualisation?minimal=true"><img src="https://img.shields.io/npm/dm/@coooookies/window-audio-visualisation.svg?style=for-the-badge&sanitize=true" alt="@coooookies/window-audio-visualisation downloads"></a>
+<a href="https://github.com/LeagueTavern/node-windows-audio-visualisation/issues"><img src="https://img.shields.io/github/issues/LeagueTavern/node-windows-audio-visualisation?style=for-the-badge" alt="@coooookies/windows-audio-visualisation downloads"></a>
+<a href="https://github.com/LeagueTavern/node-windows-audio-visualisation/actions"><img alt="GitHub CI Status" src="https://img.shields.io/github/actions/workflow/status/LeagueTavern/node-windows-audio-visualisation/CI.yml?style=for-the-badge"></a>
+<a href="https://nodejs.org/en/about/releases/"><img src="https://img.shields.io/node/v/%40coooookies%2Fwindows-audio-visualisation?style=for-the-badge" alt="Node.js version"></a>
+<a href="https://www.npmjs.com/package/@coooookies/windows-audio-visualisation"><img src="https://img.shields.io/npm/v/@coooookies/windows-audio-visualisation.svg?style=for-the-badge&sanitize=true" alt="@coooookies/windows-audio-visualisation npm version"></a>
+<a href="https://npmcharts.com/compare/@coooookies/windows-audio-visualisation?minimal=true"><img src="https://img.shields.io/npm/dm/@coooookies/windows-audio-visualisation.svg?style=for-the-badge&sanitize=true" alt="@coooookies/windows-audio-visualisation downloads"></a>
 
 ![Screenshot](docs/shot1.gif)
 
@@ -14,7 +14,7 @@
 
 ## ⚠️ 注意
 
-`node-window-audio-visualisation` 目前仅支持 Windows 平台
+`node-windows-audio-visualisation` 目前仅支持 Windows 平台
 
 ## 🚀 功能
 
@@ -25,7 +25,7 @@
 ## 安装
 
 ```shell
-npm i @coooookies/window-audio-visualisation
+npm i @coooookies/windows-audio-visualisation
 ```
 
 ## 🍊 来点栗子
@@ -40,10 +40,10 @@ npm i @coooookies/window-audio-visualisation
 
 ```Typescript
 // Typescript & ESModule
-import { AudioMonitor, getDefaultOutputDevice, getAllOutputDevices } from '@coooookies/window-audio-visualisation';
+import { AudioMonitor, getDefaultOutputDevice, getAllOutputDevices } from '@coooookies/windows-audio-visualisation';
 
 // CommonJS
-const { AudioMonitor, getDefaultOutputDevice, getAllOutputDevices } = require('@coooookies/window-audio-visualisation');
+const { AudioMonitor, getDefaultOutputDevice, getAllOutputDevices } = require('@coooookies/windows-audio-visualisation');
 ```
 
 #### 获取所有输出设备

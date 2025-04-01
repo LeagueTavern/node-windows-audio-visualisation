@@ -5,9 +5,9 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@coooookies/window-audio-visualisation@workspace:.":
+"@coooookies/windows-audio-visualisation@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@coooookies/window-audio-visualisation@workspace:."
+  resolution: "@coooookies/windows-audio-visualisation@workspace:."
   dependencies:
     "@napi-rs/cli": ^2.18.4
     "@swc-node/register": ^1.10.9

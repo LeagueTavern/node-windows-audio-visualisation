@@ -1,5 +1,5 @@
 {
-  "name": "@coooookies/window-audio-visualisation",
+  "name": "@coooookies/windows-audio-visualisation",
   "description": "A library for visualizing audio data from Windows speaker devices in Node.js.",
   "version": "1.0.1",
   "main": "index.js",
@@ -18,7 +18,7 @@
     "url": "https://mitay.net"
   },
   "napi": {
-    "name": "window-audio-visualisation",
+    "name": "windows-audio-visualisation",
     "triples": {
       "defaults": false,
       "additional": [
@@ -85,7 +85,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LeagueTavern/node-window-audio-visualisation.git"
+    "url": "git+https://github.com/LeagueTavern/node-windows-audio-visualisation.git"
   },
   "packageManager": "yarn@3.8.5"
 }
