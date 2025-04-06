@@ -4,7 +4,6 @@ use napi_derive::napi;
 pub struct AudioDevice {
   pub id: String,
   pub name: String,
-  pub sample_rate: u32,
-  pub buffer_size: Option<u32>,
+  pub state: u32,
   pub is_default: bool,
 }

@@ -1,66 +1,43 @@
-use dasp::window::{Hanning, Window};
-use rustfft::{num_complex::Complex32, num_traits::Zero, FftPlanner};
+use num_complex::Complex;
+use rustfft::FftPlanner;
 
-pub struct FFT<const BUF_SIZE: usize = 16384> {
-  planner: FftPlanner<f32>,
-  data: Vec<f32>,
-}
+pub fn analyze_spectrum(samples: &[f32], num_bands: usize) -> Vec<f32> {
+  let fft_size = samples.len().next_power_of_two();
+  let mut fft_input: Vec<Complex<f32>> = samples
+    .iter()
+    .take(fft_size)
+    .map(|&s| Complex::new(s, 0.0))
+    .collect();
 
-impl Default for FFT<16384> {
-  fn default() -> Self {
-    Self {
-      planner: FftPlanner::new(),
-      data: vec![0.; 16384],
-    }
+  for i in 0..fft_size {
+    let window =
+      0.5 * (1.0 - (2.0 * std::f32::consts::PI * i as f32 / (fft_size as f32 - 1.0)).cos());
+    fft_input[i] = fft_input[i] * window;
   }
-}
 
-impl<const BUF_SIZE: usize> FFT<BUF_SIZE> {
-  pub fn process(&mut self, buf: &[f32], size: usize) -> &[f32] {
-    if size > BUF_SIZE {
-      panic!("{size} is higher then max buf size of {BUF_SIZE}")
-    }
+  fft_input.resize(fft_size, Complex::new(0.0, 0.0));
 
-    let mut buffer = vec![Complex32::zero(); size * 2];
-    let mut scratch = vec![Complex32::zero(); size * 2];
+  let mut planner = FftPlanner::new();
+  let fft = planner.plan_fft_forward(fft_size);
+  let mut fft_output = fft_input.clone();
+  fft.process(&mut fft_output);
 
-    buffer[..size].copy_from_slice(&vec![Complex32::zero(); size][..size]);
+  let magnitudes: Vec<f32> = fft_output
+    .iter()
+    .take(fft_size / 2)
+    .map(|c| c.norm())
+    .collect();
 
-    if buf.len() > size {
-      let chunk_size = (buf.len() as f64 / size as f64).floor() as usize;
+  let mut spectrum = vec![0.0f32; num_bands];
+  let bins_per_band = (fft_size / 2) / num_bands;
 
-      let mut bins = buf
-        .chunks(chunk_size)
-        .map(|chunk: &[f32]| {
-          chunk.iter().copied().map(Hanning::window).sum::<f32>() / chunk.len() as f32
-        })
-        .map(Complex32::from);
+  for i in 0..num_bands {
+    let start = i * bins_per_band;
+    let end = (i + 1) * bins_per_band;
 
-      for i in 0..size {
-        buffer[i] = bins.next().unwrap_or_default();
-      }
-    } else {
-      for i in 0..buf.len().min(size) {
-        let value = Hanning::window(buf[i]);
-        buffer[i] = Complex32::from(value);
-      }
-    }
-
-    let max = (size as f32).sqrt();
-    let fft = self.planner.plan_fft_forward(size);
-
-    let scratch_len = fft.get_inplace_scratch_len();
-
-    if scratch_len >= scratch.len() {
-      scratch.resize(scratch_len, Complex32::zero());
-    }
-
-    fft.process_with_scratch(&mut buffer[..size], &mut scratch[..scratch_len]);
-
-    for i in 0..size {
-      self.data[i] = buffer[i].re / max;
-    }
-
-    &self.data[..size]
+    spectrum[i] = magnitudes[start..end].iter().sum::<f32>() / bins_per_band as f32;
+    spectrum[i] = (1.0 + spectrum[i]).log10();
   }
+
+  spectrum
 }
