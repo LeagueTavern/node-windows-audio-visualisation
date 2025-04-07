@@ -108,3 +108,4 @@ setInterval(() => {
 
 - [@RustAudio/cpal (Apache-2.0 license)](https://github.com/RustAudio/cpal)
 - [@Ricky12Awesome/safav (Apache-2.0 license)](https://github.com/Ricky12Awesome/safav)
+- [@HEnquist/wasapi-rs (MIT license)](https://github.com/HEnquist/wasapi-rs)
