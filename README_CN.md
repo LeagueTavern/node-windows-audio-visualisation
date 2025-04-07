@@ -54,10 +54,8 @@ const { AudioMonitor, getDefaultOutputDevice, getAllOutputDevices } = require('@
 const devices = getAllOutputDevices(); // AudioDevice[]
 // [
 //   {
-//     id: "abcdefghijk"
-//     name: "Speakers (Realtek High Definition Audio)"
-//     sampleRate: 44100
-//     bufferSize?: 2048
+//     id: "{0.0.0.00000000}.{00000000-0000-0000-0000-000000000000}",
+//     name: "Speakers (Realtek High Definition Audio)",
 //     isDefault: true
 //   },
 //   {
@@ -73,12 +71,10 @@ const devices = getAllOutputDevices(); // AudioDevice[]
 ```Typescript
 const device = getDefaultOutputDevice(); // AudioDevice | null
 // {
-//   id: "abcdefghijk"
-//   name: "Speakers (Realtek High Definition Audio)"
-//   sampleRate: 44100
-//   bufferSize?: 2048
+//   id: "{0.0.0.00000000}.{00000000-0000-0000-0000-000000000000}",
+//   name: "Speakers (Realtek High Definition Audio)",
 //   isDefault: true
-// }
+// },
 ```
 
 #### 使用 AudioMonitor 实例
@@ -88,20 +84,17 @@ const device = getDefaultOutputDevice(); // AudioDevice | null
 ```Typescript
 const audio = new AudioMonitor()
 
-audio.setDevice("abcdefghijk") // 设置音频设备Id
-audio.play() // 开始监控音频数据
+audio.setDevice("{0.0.0.00000000}.{00000000-0000-0000-0000-000000000000}") // 设置音频设备Id
+audio.start(2048) // 开始监控音频数据, 数据块大小为 2048
 
-// audio.pause() // 暂停监控音频数据
+// audio.stop() // 停止监控音频数据
 
-const length = 20
-const bands = 8
-const dancy = 12
-
-const spectrum = audio.getSpectrum(bands, dancy, 1024)
+const bands = 8 // 频谱容器的数量
+const spectrum = audio.getSpectrum(bands)
 // [0.521, 0.821, 0.123, 0.456, 0.789, 0.234, 0.567, 0.890, ...]
 
 setInterval(() => {
-  console.log(audio.getSpectrum(bands, dancy, 1024))
+  console.log(audio.getSpectrum(bands))
 }, 1e3 / 20)
 // [0.521, 0.821, 0.123, 0.456, 0.789, 0.234, 0.567, 0.890, ...]
 // [0.123, 0.456, 0.789, 0.234, 0.567, 0.890, 0.123, 0.456, ...]
