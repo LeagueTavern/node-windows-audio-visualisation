@@ -1,22 +1,22 @@
 import { AudioMonitor, getDefaultOutputDevice } from "../index.mjs"
 
+const chunkSize = 2048
+const spectrumLength = 50
+const spectrumBands = 16
+
 const defaultDevice = getDefaultOutputDevice()
 const audio = new AudioMonitor()
 
 audio.setDevice(defaultDevice.id)
-audio.play()
-
-const length = 50
-const bands = 16
-const dancy = 12
+audio.start(chunkSize)
 
 setInterval(() => {
   const spectrum = audio
-    .getSpectrum(bands, dancy, 1024)
-    .map((v) => v * (length - 1) + 1)
+    .getSpectrum(spectrumBands)
+    .map((v) => v * (spectrumLength - 1) + 1)
   console.clear()
   console.log(`Device: ${defaultDevice.name}`)
-  console.log(Array.from({ length }, () => "-").join(""))
+  console.log(Array.from({ length: spectrumLength }, () => "-").join(""))
   console.log(
     spectrum
       .map((v) => Array.from({ length: Math.floor(v) }, () => "|").join(""))

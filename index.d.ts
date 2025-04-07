@@ -6,16 +6,18 @@
 export interface AudioDevice {
   id: string
   name: string
-  sampleRate: number
-  bufferSize?: number
+  state: number
   isDefault: boolean
 }
 export declare function getAllOutputDevices(): Array<AudioDevice>
 export declare function getDefaultOutputDevice(): AudioDevice | null
 export declare class AudioMonitor {
   constructor()
-  setDevice(id: string): void
-  play(): void
-  pause(): void
-  getSpectrum(bands?: number, decay?: number, size?: number): Array<number>
+  setDevice(deviceId?: string): void
+  start(chunkSize?: number): void
+  stop(): void
+  getSpectrum(numBands: number): Array<number>
+  get currentDeviceId(): string | null
+  get running(): boolean
+  get chunkSize(): number
 }
