@@ -1,7 +1,7 @@
 {
   "name": "@coooookies/windows-audio-visualisation",
   "description": "A library for visualizing audio data from Windows speaker devices in Node.js.",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "main": "index.js",
   "module": "index.mjs",
   "types": "index.d.ts",

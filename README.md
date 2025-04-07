@@ -54,10 +54,8 @@ Gets all output devices on the system.
 const devices = getAllOutputDevices(); // AudioDevice[]
 // [
 //   {
-//     id: "abcdefghijk"
-//     name: "Speakers (Realtek High Definition Audio)"
-//     sampleRate: 44100
-//     bufferSize?: 2048
+//     id: "{0.0.0.00000000}.{00000000-0000-0000-0000-000000000000}",
+//     name: "Speakers (Realtek High Definition Audio)",
 //     isDefault: true
 //   },
 //   {
@@ -73,12 +71,10 @@ Gets the default output device on the system.
 ```Typescript
 const device = getDefaultOutputDevice(); // AudioDevice | null
 // {
-//   id: "abcdefghijk"
-//   name: "Speakers (Realtek High Definition Audio)"
-//   sampleRate: 44100
-//   bufferSize?: 2048
+//   id: "{0.0.0.00000000}.{00000000-0000-0000-0000-000000000000}",
+//   name: "Speakers (Realtek High Definition Audio)",
 //   isDefault: true
-// }
+// },
 ```
 
 #### Gets the spectrum data
@@ -88,20 +84,17 @@ Get the spectrum data, the spectrum data is composed of an array, the length of 
 ```Typescript
 const audio = new AudioMonitor()
 
-audio.setDevice("abcdefghijk") // Set the device id
-audio.play() // start monitoring
+audio.setDevice("{0.0.0.00000000}.{00000000-0000-0000-0000-000000000000}") // Set the device id
+audio.start(2048) // start monitoring with 2048 chunk size
 
-// audio.pause() // pause monitoring
+// audio.stop() // stop monitoring
 
-const length = 20
-const bands = 8
-const dancy = 12
-
-const spectrum = audio.getSpectrum(bands, dancy, 1024)
+const bands = 8 // Number of bands
+const spectrum = audio.getSpectrum(bands)
 // [0.521, 0.821, 0.123, 0.456, 0.789, 0.234, 0.567, 0.890, ...]
 
 setInterval(() => {
-  console.log(audio.getSpectrum(bands, dancy, 1024))
+  console.log(audio.getSpectrum(bands))
 }, 1e3 / 20)
 // [0.521, 0.821, 0.123, 0.456, 0.789, 0.234, 0.567, 0.890, ...]
 // [0.123, 0.456, 0.789, 0.234, 0.567, 0.890, 0.123, 0.456, ...]
