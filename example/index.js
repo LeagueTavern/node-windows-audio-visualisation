@@ -10,18 +10,16 @@ const audio = new AudioMonitor()
 audio.setDevice(defaultDevice.id)
 audio.start(chunkSize)
 
-// setInterval(() => {
-//   const spectrum = audio
-//     .getSpectrum(spectrumBands)
-//     .map((v) => v * (spectrumLength - 1) + 1)
-//   console.clear()
-//   console.log(`Device: ${defaultDevice.name}`)
-//   console.log(Array.from({ length: spectrumLength }, () => "-").join(""))
-//   console.log(
-//     spectrum
-//       .map((v) => Array.from({ length: Math.floor(v) }, () => "|").join(""))
-//       .join("\n")
-//   )
-// }, 1e3 / 20)
-
-console.log(defaultDevice.id)
+setInterval(() => {
+  const spectrum = audio
+    .getSpectrum(spectrumBands)
+    .map((v) => v * (spectrumLength - 1) + 1)
+  console.clear()
+  console.log(`Device: ${defaultDevice.name}`)
+  console.log(Array.from({ length: spectrumLength }, () => "-").join(""))
+  console.log(
+    spectrum
+      .map((v) => Array.from({ length: Math.floor(v) }, () => "|").join(""))
+      .join("\n")
+  )
+}, 1e3 / 20)
