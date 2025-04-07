@@ -1,6 +1,6 @@
 #![deny(clippy::all)]
 
-#[macro_use]
+// #[macro_use]
 extern crate napi_derive;
 
 mod fft;
